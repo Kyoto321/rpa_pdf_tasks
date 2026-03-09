@@ -6,21 +6,6 @@
 
 ---
 
-## Quick Start
-
-```bash
-# 1. Clone and install
-git clone <your-repo-url>
-cd rpa-pdf-tasks
-npm install
-
-# 2. Install Playwright browser
-npx playwright install chromium
-
-# 3. Copy and configure environment
-cp .env.example .env
-```
-
 ---
 
 ## Quest 1 — RPA PDF Crawler (Windows) 
