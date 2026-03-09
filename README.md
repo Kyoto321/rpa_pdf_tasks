@@ -1,6 +1,6 @@
 # RPA & PDF Processing Tasks
 
-> **Company**: mufin.co.kr — Korean FinTech  
+
 > **Stack**: Node.js 18+ · Playwright · pdf-lib · pdf-parse · Google Translate  
 > **Platform**: Windows (Quests 1–3) · Linux/WSL2 (Quest 4)
 
@@ -23,23 +23,23 @@ cp .env.example .env
 
 ---
 
-## Quest 1 — RPA PDF Crawler (Windows) ⭐⭐⭐
+## Quest 1 — RPA PDF Crawler (Windows) 
 
-**Goal**: Automate extraction of Korean property registry PDFs from [iros.go.kr](https://www.iros.go.kr) in **≤16 seconds** (stretch: ≤8s).
+**Goal**: Automate extraction in **≤16 seconds** (stretch: ≤8s).
 
 ### How It Works
 1. Launches headless Chromium via Playwright
-2. Navigates directly to the IROS search endpoint (bypassing home page)
+2. Navigates directly to download page
 3. Blocks images/fonts/CSS to dramatically reduce load time
 4. Searches by address → selects first result → captures PDF download
 5. Falls back to `page.pdf()` if no download event fires
 
 ### Run
 ```bash
-node quest1-crawler/crawler.js "서울특별시 강남구 테헤란로 152"
+node quest1-crawler/crawler.js
 
 # Headed mode (shows the browser – useful for debugging selectors)
-set HEADED=1 && node quest1-crawler/crawler.js "서울특별시 강남구 테헤란로 152"
+set HEADED=1 && node quest1-crawler/crawler.js
 ```
 
 ### Output
@@ -58,7 +58,7 @@ set HEADED=1 && node quest1-crawler/crawler.js "서울특별시 강남구 테헤
 
 ---
 
-## Quest 2 — Merge PDFs ⭐
+## Quest 2 — Merge PDFs
 
 **Goal**: Merge a 10-page PDF (A) and 3-page PDF (B) into a single 13-page document.
 
@@ -80,7 +80,7 @@ node quest2-merge/merge.js path/to/A.pdf path/to/B.pdf path/to/output.pdf
 
 ---
 
-## Quest 3 — Translate Korean PDF → English ⭐⭐⭐
+## Quest 3 — Translate Korean PDF → English
 
 **Goal**: Extract Korean text from a PDF → translate to English via Google Translate → overlay translated text back into the PDF.
 
@@ -112,7 +112,7 @@ input.pdf
 
 ---
 
-## Quest 4 — Linux Crawler ⭐⭐⭐⭐
+## Quest 4 — Linux Crawler
 
 **Goal**: Same crawler as Quest 1, but running on **Linux** with:
 - Structured logging (winston)
@@ -194,26 +194,3 @@ rpa-pdf-tasks/
     └── logs/
 ```
 
----
-
-## Troubleshooting
-
-| Issue | Fix |
-|---|---|
-| Selectors not found on iros.go.kr | Run in headed mode (`HEADED=1`) and use DevTools to find correct selectors |
-| Google Translate rate limit | Add delay or switch to Cloud Translation API |
-| Playwright fails on Linux | Run `npx playwright install-deps chromium` |
-| Korean text shows as `?` in sample PDF | Expected — pdf-lib requires a CJK font; real iros.go.kr PDFs have embedded fonts |
-| Crawl > 16s | Check network speed; increase resource-blocking; skip non-critical waits |
-
----
-
-## Deliverables Checklist
-
-- [x] Quest 1: RPA Crawler script
-- [x] Quest 2: PDF Merge script
-- [x] Quest 3: Translation script
-- [x] Quest 4: Linux Crawler + cron
-- [ ] Loom video (record separately)
-- [ ] Push to GitHub
-- [ ] Email to recruiting@mufin.co.kr
