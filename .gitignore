@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment secrets
+.env
+
+# Output directories (generated files)
+quest1-crawler/output/
+quest2-merge/output/
+quest3-translate/output/
+quest4-linux/output/
+quest4-linux/logs/
+
+# Input samples (real PDFs shouldn't be committed)
+quest3-translate/input/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Playwright browsers
+.playwright-browsers/

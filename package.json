@@ -1,0 +1,28 @@
+{
+  "name": "rpa-pdf-tasks",
+  "version": "1.0.0",
+  "description": "RPA & PDF Processing – Korean Real Estate Registry Crawler + PDF Tools",
+  "main": "index.js",
+  "scripts": {
+    "quest1": "node quest1-crawler/crawler.js",
+    "quest1:headed": "cross-env HEADED=1 node quest1-crawler/crawler.js",
+    "quest2": "node quest2-merge/merge.js",
+    "quest3": "node quest3-translate/translate.js",
+    "quest4": "node quest4-linux/crawler-linux.js",
+    "quest4:cron": "node quest4-linux/scheduler.js"
+  },
+  "dependencies": {
+    "@vitalets/google-translate-api": "^9.2.0",
+    "cross-env": "^7.0.3",
+    "json2csv": "^5.0.7",
+    "node-cron": "^3.0.3",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^1.1.1",
+    "playwright": "^1.43.0",
+    "tesseract.js": "^5.1.0",
+    "winston": "^3.13.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
